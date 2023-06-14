@@ -1,0 +1,15 @@
+<header class="bg-dark shadow">
+  <nav class="container-fluid navbar navbar-expand-lg navbar-dark">
+    <a class="logo" href="#">ForDevs</a>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li *ngFor="let menuItem of headerMenus" class="nav-item">
+          <a class="nav-link" href="{{ menuItem.link }}">{{ menuItem.label }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="teste"><button class="btn btn-light ml-auto mr-0" (click)="logout()">Sair</button></div>
+  </nav>
+</header>

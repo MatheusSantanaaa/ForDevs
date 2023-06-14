@@ -1,0 +1,23 @@
+.button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a:hover {
+    color: rgba(0,0,0, 0.6);
+  }
+}
+
+
+button {
+  margin: 0 5px;
+}
+
+.center{
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight:  550;
+}
+
+.voltar{
+  text-align: center;
+}

@@ -1,0 +1,65 @@
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+            <div class="center">
+              <p>Preencha os campos abaixo para criar sua conta no ForDevs.</p>
+              <a routerLink="/">
+                <br /><br />
+              </a>
+            </div>
+            <form class="form card p-5 rounded" [formGroup]="formGroup">
+
+                <div class="mb-3">
+                  <label for="email" class="form__label">Email: </label>
+                  <input type="text" id="nota" class="form-control" placeholder="Insira seu Email: " formControlName="email">
+
+                  <span class="text-danger" *ngIf="formGroup.get('email')?.hasError('required')
+                    && (formGroup.get('email')?.touched
+                      || formGroup.get('email')?.dirty)">
+                     {{campoObrigatorio}}
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                  <label for="senha" class="form__label">Senha: </label>
+                  <input type="password" id="nota" class="form-control" placeholder="Informe sua Senha: " formControlName="senha">
+
+                  <span class="text-danger" *ngIf="formGroup.get('senha')?.hasError('required')
+                    && (formGroup.get('senha')?.touched
+                      || formGroup.get('senha')?.dirty)">
+                      {{campoObrigatorio}}
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                  <label for="confirmarSenha" class="form__label">Confirmar a Senha: </label>
+                  <input type="password" id="nota" class="form-control" placeholder="Confirme sua Senha: " formControlName="confirmarSenha">
+
+
+                    <span class="text-danger" *ngIf="formGroup.get('confirmarSenha')?.hasError('required')
+                      && (formGroup.get('confirmarSenha')?.touched
+                      || formGroup.get('confirmarSenha')?.dirty)">
+                      {{campoObrigatorio}}
+                   </span>
+                </div>
+
+              </form>
+
+
+              <div class="mt-3 d-grid" style="text-align: center;">
+                <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+                    {{ 'Salvar' | uppercase }}
+                </button>
+              </div>
+
+              <div class="mt-3 button-area">
+                <a href="javascript: void(0);" (click)="handleGoBack()">
+                  {{ 'Voltar' | uppercase }}
+                </a>
+              </div>
+        <div class="mt-5 text-center"></div>
+      </div>
+    </div>
+  </div>
+</div>

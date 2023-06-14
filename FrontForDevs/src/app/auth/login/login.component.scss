@@ -1,0 +1,9 @@
+.create-user-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  a:hover {
+    color: rgba(0,0,0, 0.6);
+  }
+}

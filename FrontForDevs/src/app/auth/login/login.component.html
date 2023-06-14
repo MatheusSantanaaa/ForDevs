@@ -1,0 +1,43 @@
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card overflow-hidden shadow radius">
+          <div class="card-body pt-0">
+            <div class="p-2">
+              <h2>Login</h2> <br>
+              <form class="form-horizontal" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="dataDeReferencia" class="form__label">Email: </label>
+                  <input type="text" id="nota" class="form-control" placeholder="Insira seu Email: " formControlName="email">
+
+                </div>
+
+                <div class="mb-3">
+                  <label for="dataDeReferencia" class="form__label">Senha: </label>
+                  <div class="input-group auth-pass-inputgroup">
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="senha"
+                      placeholder="Digitar senha"
+                      aria-describedby="senha-addon" />
+                  </div>
+                </div>
+
+                <div class="mt-3 gap-3 w-100 create-user-area">
+                  <button class="btn btn-primary" type="submit">
+                    {{ 'Entrar' | uppercase }}
+                  </button>
+                  <a href="javascript: void(0);" (click)="handleCreateUser()">
+                    {{ 'Criar conta' | uppercase }}
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

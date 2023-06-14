@@ -1,0 +1,83 @@
+<div class="container-page container py-3">
+
+  <div class="container__card-cadastro-divida">
+    <form class="form card p-5 rounded" [formGroup]="formGroup">
+      <h2 class="title">Cadastro de Avaliacao</h2>
+
+
+      <fieldset class="my-2">
+        <label for="dataDeReferencia" class="form__label">Data de Referencia:</label>
+
+        <input type="date" id="dataDeReferencia" class="form-control" placeholder="Insira a data de referencia"
+          formControlName="dataDeReferencia" [ngClass]="{'is-invalid': formGroup.get('dataDeReferencia')?.errors
+                && (formGroup.get('dataDeReferencia')?.touched
+                || formGroup.get('dataDeReferencia')?.dirty)}
+                ">
+
+        <span class="text-danger" *ngIf="formGroup.get('dataDeReferencia')?.hasError('required')
+                    && (formGroup.get('dataDeReferencia')?.touched
+                        || formGroup.get('dataDeReferencia')?.dirty)">
+          {{campoObrigatorio}}
+        </span>
+
+      </fieldset>
+
+      <div class="col-lg-12">
+        <button type="button" class="btn btn-outline-primary btn-block" (click)="addAvaliacaoCliente()">
+          <i class="fas fa-plus"></i> Adicionar Cliente
+        </button>
+
+        <button type="button" class="btn btn-danger btn-block" (click)="removeAvaliacaoCliente()" *ngIf="avaliacaoClienteForms.length > 0">
+          <i class="fas fa-minus"></i> Remover Cliente
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container__card-parcelamento-divida">
+
+    <form class="form card p-5">
+      <h2 class="title">Perguntas aos Clientes</h2>
+
+      <div *ngFor="let item of avaliacaoClienteForms; let i=index" [formGroup]="item">
+        <div class="card">
+          <div class="card-body">
+
+            <fieldset class="my-2">
+              <label for="clienteId" class="form__label">Clientes: </label>
+
+              <select id="clienteId" class="form-control" formControlName="clienteId" [ngClass]="{'is-invalid': formGroup.get('clienteId')?.errors && (formGroup.get('clienteId')?.touched || formGroup.get('clienteId')?.dirty)}">
+                <option value="">Selecione um cliente</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.value">{{ cliente.label }}</option>
+              </select>
+
+              <span class="text-danger" *ngIf="formGroup.get('dataDeReferencia')?.hasError('required')
+                          && (formGroup.get('dataDeReferencia')?.touched
+                              || formGroup.get('dataDeReferencia')?.dirty)">
+                {{campoObrigatorio}}
+              </span>
+            </fieldset>
+
+            <fieldset class="my-2">
+              <label for="nota" class="form__label">Em uma escala de 0 a 10, qual a probabilidade de você recomendar nosso produto/serviço a um amigo/conhecido?</label>
+              <input type="number" id="nota" class="form-control" placeholder="Insira a nota"
+                formControlName="nota">
+             </fieldset>
+
+              <fieldset class="my-2">
+              <label for="motivoNota" class="form__label">Qual é o motivo dessa nota?</label>
+              <input type="text" id="motivoNota" class="form-control" placeholder="Insira o motivo da nota"
+                formControlName="motivoNota">
+              </fieldset>
+          </div>
+        </div>
+        <br>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-lg-12">
+    <button class="form__button" (click)="salvar()">Salvar</button>
+  </div>
+ </div>
+

@@ -1,0 +1,70 @@
+<div class="container-page container py-3">
+
+  <div class="container__card-cadastro-divida">
+    <form class="form card p-5 rounded" [formGroup]="formGroup">
+      <h2 class="title">Cadastro de Cliente</h2>
+
+
+      <fieldset class="my-2">
+        <label for="nomeDoCliente" class="form__label">Nome do Cliente:</label>
+
+        <input type="text" id="nomeDoCliente" class="form-control" placeholder="Insira o nome do Devedor"
+          formControlName="nomeDoCliente" [ngClass]="{'is-invalid': formGroup.get('nomeDoCliente')?.errors
+                && (formGroup.get('nomeDoCliente')?.touched
+                || formGroup.get('nomeDoCliente')?.dirty)}
+                ">
+
+        <span class="text-danger" *ngIf="formGroup.get('nomeDoCliente')?.hasError('required')
+                    && (formGroup.get('nomeDoCliente')?.touched
+                        || formGroup.get('nomeDoCliente')?.dirty)">
+          {{campoObrigatorio}}
+        </span>
+
+      </fieldset>
+
+      <fieldset class="my-2">
+        <label for="nomeContato" class="form__label">Nome de Contato:</label>
+        <input [disabled]="true" type="text" id="nomeContato" class="form-control" placeholder="Insira o Nome de Contato"
+          formControlName="nomeContato" [ngClass]="{'is-invalid': formGroup.get('nomeContato')?.errors
+            && (formGroup.get('nomeContato')?.touched
+            || formGroup.get('nomeContato')?.dirty)}
+            ">
+
+        <span class="text-danger" *ngIf="formGroup.get('nomeContato')?.hasError('required')
+                && (formGroup.get('nomeContato')?.touched
+                    || formGroup.get('nomeContato')?.dirty)">
+          {{campoObrigatorio}}
+        </span>
+      </fieldset>
+
+      <fieldset class="my-2">
+        <label for="numeroDocnpj" class="form__label">CNPJ:</label>
+        <input [maxlength]="18" type="text" id="numeroDocnpj" class="form-control" placeholder="00.000.000/0000-00"
+          formControlName="cnpj" [ngClass]="{'is-invalid': formGroup.get('cnpj')?.errors
+            && (formGroup.get('cnpj')?.touched
+            || formGroup.get('cnpj')?.dirty)}
+            ">
+
+        <span class="text-danger" *ngIf="formGroup.get('cnpj')?.hasError('required')
+                && (formGroup.get('cnpj')?.touched
+                    || formGroup.get('cnpj')?.dirty)">
+          {{campoObrigatorio}}
+        </span>
+      </fieldset>
+
+
+    </form>
+  </div>
+
+  <ng-container *ngIf="!view">
+    <div class="col-lg-12" >
+      <button class="form__button" (click)="salvar()">Salvar</button>
+    </div>
+  </ng-container>
+
+  <div class="col-lg-12">
+    <button class="btn btn-danger btn-block"(click)="voltar()">Fechar</button>
+  </div>
+
+ </div>
+

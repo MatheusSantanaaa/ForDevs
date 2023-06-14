@@ -1,0 +1,59 @@
+<div class=" py-5">
+  <div class="d-flex justify-content-between mb-3">
+    <h2>Lista de Avaliações</h2>
+    <div class="d-flex">
+      <button class="btn btn-primary" (click)="criar()">Novo Registro</button>
+    </div>
+  </div>
+
+
+  <table class="table table-sm border-radius">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Data de Referencia</th>
+        <th scope="col">Total/Participantes</th>
+        <th scope="col">Resultado Geral</th>
+        <th scope="col">Qtd/Promotores</th>
+        <th scope="col">Qtd/Neutros</th>
+        <th scope="col">Qtd/Detradores</th>
+        <th scope="col">Meta</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let avaliacao of avaliacoes; let i = index">
+        <th scope="row">{{ i + 1}}</th>
+          <td>{{ avaliacao.dataDeReferencia }} </td>
+          <td>{{ avaliacao.totalDeParticipantes }} </td>
+          <td>{{ avaliacao.resultadoGeral }}%</td>
+          <td>{{ avaliacao.quantidadeDePromotores }}</td>
+          <td>{{ avaliacao.quantidadeDeNeutros }}</td>
+          <td>{{ avaliacao.quantidadeDeDetratores }}</td>
+
+          <ng-container>
+            <td>
+              <ng-container [ngSwitch]="true">
+                <td *ngSwitchCase="avaliacao.resultadoGeral >= 80"><div class="circle green"></div></td>
+                <td *ngSwitchCase="avaliacao.resultadoGeral >= 60 && avaliacao.resultadoGeral < 80"><div class="circle yellow"></div></td>
+                <td *ngSwitchDefault><div class="circle red"></div></td>
+              </ng-container>
+            </td>
+          </ng-container>
+
+
+          <td class="d-flex">
+              <a class="btn m-1 btn-outline-info" (click)="editar(avaliacao.id)">
+                Editar
+              </a>
+              <a class="btn m-1 btn-outline-warning" (click)="visualizar(avaliacao.id)">
+                Visualizar
+              </a>
+              <a class="btn m-1 btn-outline-danger" (click)="remover(avaliacao.id)">
+                Deletar
+              </a>
+          </td>
+        </tr>
+  </tbody>
+  </table>
+</div>
